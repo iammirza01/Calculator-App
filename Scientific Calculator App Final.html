@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scientific Calculator App</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      color: #333333; /* Changing text color to contrast with light background */
+      text-align: center;
+      animation: gradientAnimation 10s infinite linear; /* Change animation duration to 10 seconds and use linear easing */
+    }
+
+    @keyframes gradientAnimation {
+      0% {
+        background: linear-gradient(to bottom, #b4ffb4, #b4e6ff); /* Light green to light blue */
+      }
+      16.67% {
+        background: linear-gradient(to bottom, #b4e6ff, #d9b4ff); /* Light blue to light purple */
+      }
+      33.33% {
+        background: linear-gradient(to bottom, #d9b4ff, #ffb4ff); /* Light purple to light violet */
+      }
+      50% {
+        background: linear-gradient(to bottom, #ffb4ff, #b4ffb4); /* Light violet to light green */
+      }
+      66.67% {
+        background: linear-gradient(to bottom, #b4ffb4, #b4ffb4); /* Light green to itself */
+      }
+      83.33% {
+        background: linear-gradient(to bottom, #b4ffb4, #ffc0cb); /* Light green to light pink */
+      }
+      100% {
+        background: linear-gradient(to bottom, #ffc0cb, #b4ffb4); /* Light pink to light green */
+      }
+    }
+
+    .calculator-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .calculator-header {
+      margin-bottom: 20px;
+    }
+
+    .calculator-header h1 {
+      font-size: 24px;
+    }
+
+    .calculator-body {
+      max-width: 550px;
+      margin: 0 auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+      border-radius: 40px;
+    }
+
+    #display {
+      width: 90%;
+      margin-bottom: 10px;
+      padding: 10px;
+      font-size: 18px;
+      border-radius: 30px;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    button {
+      background-color: #f0f0f0; /* Very light gray */
+      color: #333333; /* Dark gray text */
+      padding: 15px;
+      border: none;
+      border-radius: 50%; /* Make buttons round */
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    button:hover {
+      background-color: #e0e0e0; /* Lighter gray on hover */
+    }
+
+    .app-creator {
+      margin-top: 150px;
+      font-size: 15px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator-container">
+    <div class="calculator-header">
+      <h1>Scientific Calculator</h1>
+    </div>
+    <div class="calculator-body">
+      <input type="text" id="display" readonly>
+      <div class="buttons">
+        <button onclick="appendToDisplay('7')">7</button>
+        <button onclick="appendToDisplay('8')">8</button>
+        <button onclick="appendToDisplay('9')">9</button>
+        <button onclick="appendToDisplay('/')">/</button>
+
+        <button onclick="appendToDisplay('4')">4</button>
+        <button onclick="appendToDisplay('5')">5</button>
+        <button onclick="appendToDisplay('6')">6</button>
+        <button onclick="appendToDisplay('*')">*</button>
+
+        <button onclick="appendToDisplay('1')">1</button>
+        <button onclick="appendToDisplay('2')">2</button>
+        <button onclick="appendToDisplay('3')">3</button>
+        <button onclick="appendToDisplay('-')">-</button>
+
+        <button onclick="appendToDisplay('0')">0</button>
+        <button onclick="appendToDisplay('.')">.</button>
+        <button onclick="clearDisplay()">C</button>
+        <button onclick="appendToDisplay('+')">+</button>
+
+        <button onclick="appendToDisplay('Math.sqrt(')">√</button>
+        <button onclick="appendToDisplay('Math.pow(')">^</button>
+
+        <!-- Add other scientific calculator buttons as needed -->
+        <button onclick="calculate()">=</button>
+      </div>
+    </div>
+    <div class="app-creator">Made With ❤️ by MH Softwares</div>
+
+  </div>
+
+  <script>
+    let display = document.getElementById('display');
+
+    function appendToDisplay(value) {
+      display.value += value;
+    }
+
+    function clearDisplay() {
+      display.value = '';
+    }
+
+    function calculate() {
+      try {
+        display.value = eval(display.value);
+      } catch(error) {
+        display.value = 'Error';
+      }
+    }
+  </script>
+</body>
+</html>
